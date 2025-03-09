@@ -2,13 +2,25 @@
 
 #include <iostream>
 #include <string>
-#include <fstream> //memo: for FileIO
+#include <fstream>
 #include <vector>
-#include <memory> //memo: for unique_ptr
+#include <memory>
 #include <map>
 
 class Player {
 public:
-	Player() { std::cout << "some string about player" << std::endl; }
-	~Player() { std::cout << "Player destroyed!" << std::endl; };
+    std::string playerName;
+    std::vector<std::string> inventory; // Stores player's inventory
+
+    Player(std::string name) : playerName(name) {
+        inventory = { "knife", "water bottle", "matches" };
+    }
+
+    void showInventory() {
+        std::cout << "Your inventory: ";
+        for (const auto& item : inventory) {
+            std::cout << item << " ";
+        }
+        std::cout << "\n";
+    }
 };
